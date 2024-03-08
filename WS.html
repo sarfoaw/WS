@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Scramble Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #word {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    #input {
+      width: 200px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    #submit {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Word Scramble Game</h1>
+        <div id="word"></div>
+        <input type="text" id="input" placeholder="Your guess">
+        <button id="submit">Submit</button>
+        <p id="message"></p>
+      </div>
+    
+      <script>
+        // List of words
+        var words = ["javascript", "html", "css", "code", "computer", "program"];
+    
+        // Choose a random word from the list
+        var randomIndex = Math.floor(Math.random() * words.length);
+        var selectedWord = words[randomIndex];
+    
+        // Function to scramble the word
+        function scrambleWord(word) {
+          return word.split('').sort(function(){return 0.5-Math.random()}).join('');
+        }
+    
+        // Display scrambled word
+        document.getElementById('word').innerText = scrambleWord(selectedWord);
+    
+        // Check user's guess
+        document.getElementById('submit').addEventListener('click', function() {
+          var guess = document.getElementById('input').value.trim().toLowerCase();
+          if (guess === selectedWord) {
+            document.getElementById('message').innerText = 'Correct! You got it right!';
+          } else {
+            document.getElementById('message').innerText = 'Incorrect! Try again.';
+          }
+        });
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
